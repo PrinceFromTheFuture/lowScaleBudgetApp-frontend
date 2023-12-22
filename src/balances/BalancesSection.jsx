@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Balance from "./Balance";
-import NewBalance from "./newBalance";
+import NewBalance from "./NewBalance";
 
 const BalancesSection = () => {
   const [allBalances, setAllBalances] = useState([]);
