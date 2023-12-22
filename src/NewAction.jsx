@@ -73,7 +73,7 @@ const NewAction = ({ closeNewAction }) => {
       case 1:
         return (
           <div className="flex flex-col justify-normal items-center w-full">
-            <label className="text-3xl mb-5 ml-5 font-extrabold">
+            <label className="text-2xl mb-5 ml-5 font-extrabold">
               Tell us About your transaction type
             </label>
             <div
@@ -86,8 +86,8 @@ const NewAction = ({ closeNewAction }) => {
                 className="p-3 bg-[#65AD82]  rounded-xl w-12 "
               />
               <div className="text-start ml-3">
-                <div className=" text-xl  font-bold">income</div>
-                <div className=" text-md text-[#C2C2C2]">
+                <div className=" text-lg  font-bold">income</div>
+                <div className=" text-sm text-[#C2C2C2]">
                   choose if this is a revenu
                 </div>
               </div>
@@ -102,8 +102,8 @@ const NewAction = ({ closeNewAction }) => {
                 className="p-3 bg-[#D27979]  rounded-xl w-12 "
               />
               <div className="text-start ml-3">
-                <div className="   text-xl  font-bold">outcome</div>
-                <div className="text-md text-[#C2C2C2]">
+                <div className="   text-lg  font-bold">outcome</div>
+                <div className="text-sm text-[#C2C2C2]">
                   choose if this is an expenss
                 </div>
               </div>
@@ -113,10 +113,10 @@ const NewAction = ({ closeNewAction }) => {
                 {budgets.map((budget) => {
                   return (
                     <div
-                      className="p-2 bg-[#343434] rounded-xl flex justify-center items-center mr-3 gap-2 hover:border border-[#C2C2C2] "
+                      className="p-1.5 bg-[#343434] rounded-xl flex justify-center items-center mr-3 gap-2 hover:border border-[#C2C2C2] "
                       onClick={() => handleButtonChoice("budget", budget.title)}
                     >
-                      <div className="w-5 h-5 bg-[#65AD82] rounded-full"></div>
+                      <div className="w-5  text-base h-5 bg-[#65AD82] rounded-full"></div>
                       <div>{budget.title}</div>
                     </div>
                   );
