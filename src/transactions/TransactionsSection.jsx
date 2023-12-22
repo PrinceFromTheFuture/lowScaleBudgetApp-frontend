@@ -16,7 +16,7 @@ const TransactionsSection = () => {
   }, []);
 
   return (
-    <table className="w-1/2 text-start ">
+    <table className="w-1/2 text-start overflow-hidden ">
       <tr className="font-bold">
         <td>index</td>
         <td>amount</td>

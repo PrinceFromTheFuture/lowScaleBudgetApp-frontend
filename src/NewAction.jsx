@@ -116,8 +116,8 @@ const NewAction = ({ closeNewAction }) => {
                       className="p-2.5 bg-[#343434] rounded-xl flex justify-center items-center mr-3 gap-2 hover:border border-[#C2C2C2] "
                       onClick={() => handleButtonChoice("budget", budget.title)}
                     >
-                      <div className=" w-5 h-5 bg-[#65AD82] rounded-full"></div>
-                      <div className=" text-xs ">{budget.title}</div>
+                      <div className=" w-3 h-3 bg-[#65AD82] rounded-full"></div>
+                      <div className=" text-sm ">{budget.title}</div>
                     </div>
                   );
                 })}
