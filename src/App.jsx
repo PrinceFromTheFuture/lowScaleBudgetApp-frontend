@@ -35,16 +35,18 @@ function Home() {
           <h1 className="text-4xl font-bold m-4">Budgets</h1>
           <BudgetsSection />
         </div>
-        <div className="m-12">
-          <h1 className="text-4xl font-bold m-4">Transactions</h1>
-          <button
-            onClick={() => setOpenNewAction(true)}
-            className="p-2 bg-green-600 cursor-pointer rounded text-white m-3"
-          >
-            new Action
-          </button>
-          <TransactionsSection />
-        </div>
+        {window.innerWidth > 800 && (
+          <div className="m-12">
+            <h1 className="text-4xl font-bold m-4">Transactions</h1>
+            <button
+              onClick={() => setOpenNewAction(true)}
+              className="p-2 bg-green-600 cursor-pointer rounded text-white m-3"
+            >
+              new Action
+            </button>
+            <TransactionsSection />
+          </div>
+        )}
         {openNewAction && (
           <NewAction closeNewAction={() => setOpenNewAction(false)} />
         )}
