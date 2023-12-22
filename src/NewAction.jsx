@@ -113,11 +113,11 @@ const NewAction = ({ closeNewAction }) => {
                 {budgets.map((budget) => {
                   return (
                     <div
-                      className="p-2 bg-[#343434] rounded-xl flex justify-center items-center mr-3 gap-2 hover:border border-[#C2C2C2] "
+                      className="p-2.5 bg-[#343434] rounded-xl flex justify-center items-center mr-3 gap-2 hover:border border-[#C2C2C2] "
                       onClick={() => handleButtonChoice("budget", budget.title)}
                     >
                       <div className=" w-5 h-5 bg-[#65AD82] rounded-full"></div>
-                      <div className=" text-sm ">{budget.title}</div>
+                      <div className=" text-xs ">{budget.title}</div>
                     </div>
                   );
                 })}
@@ -175,7 +175,7 @@ const NewAction = ({ closeNewAction }) => {
 
             <input
               type="datetime-local"
-              className=" rounded-xl mb-4  bg-[#343434] p-4 outline-none text-center text-xl font-extrabold  w-full flex items-center justify-center"
+              className=" rounded-xl mb-4  bg-[#343434] p-4 outline-none text-center text-lg font-extrabold  w-full flex items-center justify-center"
               value={formData.date || formattedDate}
               autoFocus
               id="date"
@@ -233,7 +233,7 @@ const NewAction = ({ closeNewAction }) => {
       </button>
       <div className="  text-4xl text-white  font-bold ">New Transaction</div>
       <form className="w-full text-white">
-        <div className=" border rounded-xl border-[#C2C2C2]  p-6 py-10 h-fit flex justify-center items-center">
+        <div className=" border rounded-xl border-[#C2C2C2]  p-4 py-8 h-fit flex justify-center items-center">
           {renderInputsForStep()}
         </div>
       </form>
