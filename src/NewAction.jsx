@@ -73,7 +73,7 @@ const NewAction = ({ closeNewAction }) => {
       case 1:
         return (
           <div className="flex flex-col justify-normal items-center w-full">
-            <label className="text-2xl mb-5 ml-5 font-extrabold">
+            <label className="text-3xl mb-5 ml-5 font-extrabold">
               Tell us About your transaction type
             </label>
             <div
@@ -83,7 +83,7 @@ const NewAction = ({ closeNewAction }) => {
               <img
                 src="income.svg"
                 alt=""
-                className="p-3 bg-[#65AD82]  rounded-xl w-12 "
+                className="p-2.5 bg-[#65AD82]  rounded-xl w-11 "
               />
               <div className="text-start ml-3">
                 <div className=" text-lg  font-bold">income</div>
@@ -99,7 +99,7 @@ const NewAction = ({ closeNewAction }) => {
               <img
                 src="outcome.svg"
                 alt=""
-                className="p-3 bg-[#D27979]  rounded-xl w-12 "
+                className="p-2.5 bg-[#D27979]  rounded-xl w-11 "
               />
               <div className="text-start ml-3">
                 <div className="   text-lg  font-bold">outcome</div>
@@ -113,11 +113,11 @@ const NewAction = ({ closeNewAction }) => {
                 {budgets.map((budget) => {
                   return (
                     <div
-                      className="p-1.5 bg-[#343434] rounded-xl flex justify-center items-center mr-3 gap-2 hover:border border-[#C2C2C2] "
+                      className="p-2 bg-[#343434] rounded-xl flex justify-center items-center mr-3 gap-2 hover:border border-[#C2C2C2] "
                       onClick={() => handleButtonChoice("budget", budget.title)}
                     >
-                      <div className="w-5  text-base h-5 bg-[#65AD82] rounded-full"></div>
-                      <div>{budget.title}</div>
+                      <div className=" w-5 h-5 bg-[#65AD82] rounded-full"></div>
+                      <div className=" text-sm ">{budget.title}</div>
                     </div>
                   );
                 })}
@@ -128,14 +128,14 @@ const NewAction = ({ closeNewAction }) => {
       case 2:
         return (
           <div className="flex flex-col justify-normal items-center  w-full">
-            <label className="text-4xl mb-5 ml-5 font-extrabold">
+            <label className="text-3xl mb-5 ml-5 font-extrabold">
               {formData.type === "outcome"
                 ? "And How Much Did Your Transation Cost?"
                 : "And How Much Did You Earn?"}
             </label>
             <input
               type="number"
-              className=" rounded mb-4  bg-[#343434] p-2  outline-none text-center text-5xl font-bold  w-full "
+              className=" rounded mb-4  bg-[#343434] p-2  outline-none text-center text-3xl font-bold  w-full "
               value={formData.amount || ""}
               placeholder="0.00₪"
               autoFocus
@@ -143,7 +143,7 @@ const NewAction = ({ closeNewAction }) => {
               onChange={handleInputChange}
               onKeyDown={handleInputKeyDown}
             />
-            <div className="rounded-full bg-[#343434] p-1 pl-4 pr-4 font-extrabold text-lg">
+            <div className="rounded-full bg-[#343434] p-1 pl-4 pr-4 font-bold text-base">
               ILS ₪
             </div>
           </div>
@@ -151,8 +151,8 @@ const NewAction = ({ closeNewAction }) => {
       case 3:
         return (
           <div className="flex flex-col justify-normal items-center  w-full">
-            <label className="text-4xl mb-8 ml-5 font-extrabold">
-              And How Would You Call Your Transaction
+            <label className="text-3xl mb-8 ml-5 font-extrabold">
+              How Would You Call Your Transaction?
             </label>
             <input
               type="text"
@@ -169,13 +169,13 @@ const NewAction = ({ closeNewAction }) => {
       case 4:
         return (
           <div className="flex flex-col justify-normal items-center  w-full">
-            <label className="text-4xl mb-8 ml-5 font-extrabold">
+            <label className="text-3xl mb-8 ml-5 font-extrabold">
               When Did Your Transaction Occurred
             </label>
 
             <input
               type="datetime-local"
-              className=" rounded-xl mb-4  bg-[#343434] p-4 outline-none text-center text-2xl font-extrabold  w-full flex items-center justify-center"
+              className=" rounded-xl mb-4  bg-[#343434] p-4 outline-none text-center text-xl font-extrabold  w-full flex items-center justify-center"
               value={formData.date || formattedDate}
               autoFocus
               id="date"
@@ -186,30 +186,35 @@ const NewAction = ({ closeNewAction }) => {
         );
       case 5:
         return (
-          <div className=" grid  grid-cols-2 w-full gap-4 ">
-            {balances.map((balance) => {
-              return (
-                <div
-                  style={
-                    formData.target == balance.title
-                      ? { borderWidth: "1px", borderColor: "#C2C2C2" }
-                      : {}
-                  }
-                  onClick={() => handleButtonChoice("target", balance.title)}
-                  className="flex items-center justify-center flex-col bg-[#343434] rounded-xl  hover:border border-[#C2C2C2]  p-4"
-                >
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="w-3 h-3 bg-[#65AD82] rounded-full"></div>
-                    <div className="   text-2xl  font-bold mb-2">
-                      {balance.title}
+          <div>
+            <label className="text-3xl mb-8 ml-5 font-extrabold">
+              What Balance Did You Use?
+            </label>
+            <div className=" grid  grid-cols-2 w-full gap-4 ">
+              {balances.map((balance) => {
+                return (
+                  <div
+                    style={
+                      formData.target == balance.title
+                        ? { borderWidth: "1px", borderColor: "#C2C2C2" }
+                        : {}
+                    }
+                    onClick={() => handleButtonChoice("target", balance.title)}
+                    className="flex items-center justify-center flex-col bg-[#343434] rounded-xl  hover:border border-[#C2C2C2]  p-2"
+                  >
+                    <div className="flex items-center justify-center gap-2 text-center">
+                      <div className="w-3 h-3 bg-[#65AD82] rounded-full"></div>
+                      <div className="   text-lg  font-bold mb-2">
+                        {balance.title}
+                      </div>
+                    </div>
+                    <div className="text-sm text-[#C2C2C2] bg-[#242424] p-1 rounded px-4  font-bold ">
+                      {balance.balance}₪
                     </div>
                   </div>
-                  <div className="text-lg text-[#C2C2C2] bg-[#242424] p-1 rounded px-8  font-bold ">
-                    {balance.balance}₪
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         );
 
@@ -219,16 +224,16 @@ const NewAction = ({ closeNewAction }) => {
   };
 
   return (
-    <div className="  overflow-hidden select-none   fixed right-0 top-0 bottom-0 left-0 bg-[#242424] p-8 md:p-12  flex justify-between  flex-col">
+    <div className="  overflow-hidden select-none   fixed right-0 top-0 bottom-0 left-0 bg-[#242424] p-6 md:p-12  flex justify-between  flex-col">
       <button
         className="  bg-[#343434] rounded text-white p-3 text-2xl w-fit"
         onClick={() => closeNewAction()}
       >
         X
       </button>
-      <div className="  text-5xl text-white  font-bold ">New Transaction</div>
+      <div className="  text-4xl text-white  font-bold ">New Transaction</div>
       <form className="w-full text-white">
-        <div className=" border rounded-xl border-[#C2C2C2]  p-8 py-10 h-fit flex justify-center items-center">
+        <div className=" border rounded-xl border-[#C2C2C2]  p-6 py-10 h-fit flex justify-center items-center">
           {renderInputsForStep()}
         </div>
       </form>
@@ -236,14 +241,14 @@ const NewAction = ({ closeNewAction }) => {
         {step < 5 ? (
           <button
             onClick={handleNextStep}
-            className="bg-[#343434] w-full p-3 rounded-xl m-2 text-white text-2xl"
+            className="bg-[#343434] w-full p-3 rounded-xl m-2 text-white text-xl font-bold"
           >
             Next
           </button>
         ) : (
           <button
             onClick={handleSubmit}
-            className="bg-[#343434] w-full p-3 rounded-xl m-2 text-white text-2xl"
+            className="bg-[#343434] w-full p-3 rounded-xl m-2 text-white text-xl font-bold"
           >
             Submit
           </button>
@@ -252,7 +257,7 @@ const NewAction = ({ closeNewAction }) => {
         {step !== 1 && (
           <button
             onClick={handlePreviousStep}
-            className="bg-[#343434] w-full p-3 rounded-xl m-2 text-white text-2xl"
+            className="bg-[#343434] w-full p-3 rounded-xl m-2 text-white text-xl font-bold"
           >
             Back
           </button>
