@@ -85,7 +85,7 @@ const NewAction = ({ closeNewAction }) => {
                 alt=""
                 className="p-3 bg-[#65AD82]  rounded-xl w-12 "
               />
-              <div className="text-start m-3">
+              <div className="text-start ml-3">
                 <div className=" text-xl  font-bold">income</div>
                 <div className=" text-md text-[#C2C2C2]">
                   choose if this is a revenu
