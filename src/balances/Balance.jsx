@@ -30,7 +30,9 @@ const Balance = ({ balance }) => {
       <div className=" flex justify-between items-center p-4">
         <div className="">
           <div>{updatedBalance.title}</div>
-          <div className="font-bold text-xl p-1">{updatedBalance.balance}₪</div>
+          <div className="font-bold text-xl p-1">
+            {updatedBalance.balance.toFixed(2)}₪
+          </div>
         </div>
         {allowActions == true ? (
           <div className="flex">

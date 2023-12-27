@@ -2,7 +2,7 @@ const Transaction = ({ transaction }) => {
   return (
     <>
       <td>{transaction.title}</td>
-      <td>{transaction.amount}₪</td>
+      <td>{transaction.amount.toFixed(2)}₪</td>
       <td
         className={
           transaction.type == "outcome"

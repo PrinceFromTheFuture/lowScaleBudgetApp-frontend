@@ -31,7 +31,9 @@ const Budget = ({ budget }) => {
       <div className=" flex justify-between items-center p-4">
         <div className="">
           <div>{updatedBudget.contributionPercentage}%</div>
-          <div className="font-bold text-xl p-1">{updatedBudget.balance}₪</div>
+          <div className="font-bold text-xl p-1">
+            {updatedBudget.balance.toFixed(2)}₪
+          </div>
         </div>
         {allowActions == true ? (
           <div className="flex">
