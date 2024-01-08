@@ -224,7 +224,7 @@ const NewAction = ({ closeNewAction }) => {
   };
 
   return (
-    <div className="  overflow-hidden select-none   fixed right-0 top-0 bottom-0 left-0 bg-[#242424] p-6 md:p-12  flex justify-between  flex-col">
+    <div className="  overflow-scroll select-none   fixed right-0 top-0 bottom-0 left-0 bg-[#242424] p-6 md:p-12  flex justify-between  flex-col">
       <button
         className="  bg-[#343434] rounded text-white p-3 text-2xl w-fit"
         onClick={() => closeNewAction()}
