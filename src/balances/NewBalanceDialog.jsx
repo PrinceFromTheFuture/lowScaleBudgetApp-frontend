@@ -43,9 +43,9 @@ const NewBalanceDialog = () => {
       <>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Edit Budget</DialogTitle>
+            <DialogTitle>new Balance</DialogTitle>
             <DialogDescription>
-              Make changes to your Budget here. Click save when you're done.
+              Create a new Balance. Click Create when you're done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
@@ -80,7 +80,7 @@ const NewBalanceDialog = () => {
           <DialogFooter>
             <DialogClose>
               <Button variant="new" type="submit" onClick={ handleSubmit}>
-                Save changes
+                Create Balance
               </Button>
             </DialogClose>
           </DialogFooter>
