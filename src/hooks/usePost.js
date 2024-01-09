@@ -5,7 +5,8 @@ const usePost = (model, object) => {
   const [isFinished, setIsFinished] = useState(false);
 
   const submitData = async () => {
-      console.log(object)
+     
+
     const response = await fetch(`${baseURI}/${model}/new`, {
       method: "POST",
       headers: {
