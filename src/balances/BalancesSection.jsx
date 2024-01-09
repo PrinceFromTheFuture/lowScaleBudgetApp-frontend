@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Balance from "./Balance";
-import NewBalanceDialog from "@/balances/newBalanceDialog";
+import NewBalanceDialog from "@/balances/NewBalanceDialog";
 const BalancesSection = () => {
   const [allBalances, setAllBalances] = useState([]);
 
