@@ -42,9 +42,9 @@ const NewBudgetDialog = () => {
       <>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Edit Budget</DialogTitle>
+            <DialogTitle>New Budget</DialogTitle>
             <DialogDescription>
-              Make changes to your Budget here. Click save when you're done.
+              Create A new Budget here. Click Create when you're done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
