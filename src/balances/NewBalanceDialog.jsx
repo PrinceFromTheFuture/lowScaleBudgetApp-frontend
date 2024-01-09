@@ -79,7 +79,7 @@ const NewBalanceDialog = () => {
           </div>
           <DialogFooter>
             <DialogClose>
-              <Button variant="new" type="submit" onClick={() => handleSubmit}>
+              <Button variant="new" type="submit" onClick={ handleSubmit}>
                 Save changes
               </Button>
             </DialogClose>
