@@ -8,6 +8,7 @@ import BalancesSection from "./balances/BalancesSection";
 import BudgetsSection from "./budgets/BudgetsSection";
 import actionModeContext from "./contexts/actionModeContext";
 import ActionModeSwtich from "./ActionModeSwitch";
+import TestComp from "./TestComp";
 
 function Home() {
   const [openNewAction, setOpenNewAction] = useState(false);
@@ -51,6 +52,8 @@ function Home() {
           <NewAction closeNewAction={() => setOpenNewAction(false)} />
         )}
       </actionModeContext.Provider>
+
+      <TestComp />
     </div>
   );
 }
