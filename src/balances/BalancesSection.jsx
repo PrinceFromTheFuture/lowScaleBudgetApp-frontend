@@ -15,15 +15,26 @@ const BalancesSection = () => {
 
   useEffect(() => {
     fetchData();
+    console.log(allBalances);
   }, []);
 
   return (
-    <div className="flex gap-10 overflow-auto">
-      <NewBalanceDialog></NewBalanceDialog>
-
-      {allBalances.map((balance, index) => {
-        return <Balance key={index} balance={balance} />;
-      })}
+    <div>
+      <div className="mb-4">
+        <NewBalanceDialog />
+      </div>
+      <div className="flex gap-10 overflow-auto">
+        {allBalances.map((balance, index) => {
+          return (
+            <Balance
+              key={index}
+              balance={balance}
+              allBalances={allBalances}
+              setAllBalances={setAllBalances}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

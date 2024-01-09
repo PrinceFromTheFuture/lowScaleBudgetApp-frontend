@@ -19,11 +19,23 @@ const BalancesSection = () => {
   }, []);
 
   return (
-    <div className="flex gap-10 overflow-auto">
-      <NewBudgetDialog></NewBudgetDialog>
-      {allBudgets.map((budget, index) => {
-        return <Budget key={index} budget={budget} />;
-      })}
+    <div>
+      <div className="mb-4">
+        <NewBudgetDialog />
+      </div>
+
+      <div className="flex gap-10 overflow-auto">
+        {allBudgets.map((budget, index) => {
+          return (
+            <Budget
+              key={index}
+              budget={budget}
+              setAllBudgets={setAllBudgets}
+              allBudgets={allBudgets}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -84,7 +84,7 @@ const NewBudgetDialog = () => {
           <DialogFooter>
             <DialogClose>
               <Button variant="new" type="submit" onClick={handleSubmit}>
-                Save changes
+                Create Budget
               </Button>
             </DialogClose>
           </DialogFooter>

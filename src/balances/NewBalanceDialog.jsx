@@ -39,12 +39,12 @@ const NewBalanceDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="new">New Budget</Button>
+        <Button variant="new">New Balance</Button>
       </DialogTrigger>
       <>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>new Balance</DialogTitle>
+            <DialogTitle>New Balance</DialogTitle>
             <DialogDescription>
               Create a new Balance. Click Create when you're done.
             </DialogDescription>
@@ -81,7 +81,7 @@ const NewBalanceDialog = () => {
           <DialogFooter>
             <DialogClose>
               <Button variant="new" type="submit" onClick={handleSubmit}>
-                Save changes
+                Create Balance
               </Button>
             </DialogClose>
           </DialogFooter>

@@ -1,17 +1,48 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import useDelete from "../hooks/useDelete";
 import useUpdate from "../hooks/useUpdate";
 import actionModeContext from "../contexts/actionModeContext";
 
-const Budget = ({ budget }) => {
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+
+const Budget = ({ budget, setAllBudgets, allBudgets }) => {
   const [updatedBudget, setUpdatedBudget] = useState(budget);
 
-  const { deleteData } = useDelete("budgets", updatedBudget._id);
-  const { updateData } = useUpdate("budgets", updatedBudget);
+  const { deleteData } = useDelete("Budgets", updatedBudget._id);
+  const { updateData } = useUpdate("Budgets", updatedBudget);
 
   const allowActions = useContext(actionModeContext);
-
-  const [editMode, setEditMode] = useState(false);
 
   //editMode
   const handleChange = (event) => {
@@ -20,88 +51,134 @@ const Budget = ({ budget }) => {
   };
   const handleUpdate = () => {
     updateData();
-    setEditMode(false);
+
+    const newAllBudgets = allBudgets.map((obj) =>
+      obj._id === updatedBudget._id
+        ? {
+            ...obj,
+            title: updatedBudget.title,
+            balance: updatedBudget.balance,
+            contributionPercentage: updatedBudget.contributionPercentage,
+          }
+        : obj
+    );
+    setAllBudgets(newAllBudgets);
+  };
+
+  const onDelete = () => {
+    const newAllBudgets = allBudgets.filter(
+      (obj) => obj._id !== updatedBudget._id
+    );
+    setAllBudgets(newAllBudgets);
+    deleteData();
   };
 
   return (
-    <div className=" bg-slate-200  rounded-md " style={{ minWidth: "17em" }}>
-      <div className="bg-slate-500 p-3  flex justify-center items-center rounded-md text-white">
-        {updatedBudget.title}
-      </div>
-      <div className=" flex justify-between items-center p-4">
-        <div className="">
-          <div>{updatedBudget.contributionPercentage}%</div>
-          <div className="font-bold text-xl p-1">
-            {updatedBudget.balance.toFixed(2)}₪
+    <div>
+      <Card className="w-[200px]">
+        <CardHeader>
+          <CardTitle>{budget.title}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="font-bold text-3xl">
+            ₪{Number(budget.balance).toFixed(2)}
           </div>
-        </div>
-        {allowActions == true ? (
-          <div className="flex">
-            <div
-              className="p-2 bg-red-600 cursor-pointer rounded text-white m-1"
-              onClick={deleteData}
-            >
-              delete
-            </div>
-            <div
-              onClick={() => setEditMode(true)}
-              className="p-2 bg-cyan-700 cursor-pointer rounded text-white m-1"
-            >
-              edit
-            </div>
+          <div className=" text-slate-500 ">
+            {budget.contributionPercentage}%
           </div>
+        </CardContent>
+        {allowActions ? (
+          <CardFooter className="flex justify-between">
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="outline">Delete</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will permanently delete
+                    the Budget and remove your data from our servers.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    className="bg-red-500 text-slate-50 shadow-sm hover:bg-red-500/90 "
+                    onClick={onDelete}
+                  >
+                    Delete Permanently
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="udpate">Edit</Button>
+              </DialogTrigger>
+              <>
+                <DialogContent className="sm:max-w-[450px]">
+                  <DialogHeader>
+                    <DialogTitle>Update Budget</DialogTitle>
+                    <DialogDescription>
+                      Updated your Budget details. Click Save when you're done.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="grid gap-4 py-4">
+                    <div className="grid grid-cols-4 items-center gap-4">
+                      <Label htmlFor="title" className="text-right">
+                        Title
+                      </Label>
+                      <Input
+                        id="title"
+                        className="col-span-3"
+                        onChange={handleChange}
+                        value={updatedBudget.title}
+                      />
+                    </div>
+                    <div className="grid grid-cols-4 items-center gap-4">
+                      <Label htmlFor="budget" className="text-right">
+                        Budget
+                      </Label>
+                      <Input
+                        id="balance"
+                        className="col-span-3"
+                        type="number"
+                        onChange={handleChange}
+                        value={updatedBudget.balance}
+                      />
+                    </div>
+                    <div className="grid grid-cols-4 items-center gap-4">
+                      <Label htmlFor="type" className="text-right">
+                        contribution percentage
+                      </Label>
+                      <Input
+                        id="contributionPercentage"
+                        className="col-span-3"
+                        onChange={handleChange}
+                        value={updatedBudget.contributionPercentage}
+                      />
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <DialogClose>
+                      <Button
+                        variant="udpate"
+                        type="submit"
+                        onClick={handleUpdate}
+                      >
+                        Save Changes
+                      </Button>
+                    </DialogClose>
+                  </DialogFooter>
+                </DialogContent>
+              </>
+            </Dialog>
+          </CardFooter>
         ) : (
           ""
         )}
-      </div>
-      {editMode ? (
-        <div className=" absolute bg-slate-50/95 right-0 top-0 bottom-0 left-0 flex justify-center items-center flex-col">
-          <div
-            onClick={() => setEditMode(false)}
-            className=" bg-gray-800  w-fit p-3 text-white m-4 rounded text-2xl  cursor-pointer absolute left-0 top-0"
-          >
-            X
-          </div>
-          <form action="" className=" flex flex-col">
-            <label htmlFor="">Title</label>
-            <input
-              type="text"
-              id="title"
-              value={updatedBudget.title}
-              className="  border-slate-800 border-2"
-              onChange={handleChange}
-              required
-              autoFocus
-            />
-            <label htmlFor="">Balance</label>
-            <input
-              type="number"
-              id="balance"
-              value={updatedBudget.balance}
-              className="  border-slate-800 border-2"
-              onChange={handleChange}
-              required
-            />
-            <label htmlFor="">contribution percentage</label>
-            <input
-              type="number"
-              id="contributionPercentage"
-              value={updatedBudget.contributionPercentage}
-              className="  border-slate-800 border-2"
-              onChange={handleChange}
-              required
-            />
-          </form>
-          <div
-            className=" bg-slate-900 text-white  w-52 rounded p-2 flex justify-center items-center cursor-pointer m-4"
-            onClick={handleUpdate}
-          >
-            update
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
+      </Card>
     </div>
   );
 };
